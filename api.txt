@@ -1,0 +1,4 @@
+https://www.airbnb.com/locations/api/neighborhood_tiles_by_point.json?point[lat]=40.65&point[lon]=-73.95
+https://www.airbnb.com/locations/api/neighborhood_tiles.json?ids[]=1120&ids[]=1150&ids[]=1124&ids[]=1228&ids[]=2545&ids[]=961&ids[]=1262
+https://www.airbnb.com/locations/api/city_by_point?point[lat]=40.7143528&point[lon]=-74.00597309999999
+https://www.airbnb.com/locations/new-york/neighborhood-traits.json
