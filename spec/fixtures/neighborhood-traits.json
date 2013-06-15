@@ -1,0 +1,10 @@
+{
+  "city": {
+    "name": "New York",
+    "id": 22,
+    "permalink": "new-york",
+    "bounds": { },
+    "traits": [ ],
+    "neighborhoods": [ ]
+  }
+}

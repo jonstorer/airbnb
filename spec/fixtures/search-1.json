@@ -1,0 +1,90 @@
+{
+  "view_type": 1,
+  "remarketing_side": 0,
+  "remarketing_language": "en",
+  "present_standby_option": false,
+  "title": "New York Vacation Rentals And Rooms For Rent - Airbnb",
+  "meta_description": "Perfect NYC pads, from designer lofts to opulent penthouses.",
+  "mini_prices": null,
+  "social_enabled": false,
+  "results_count_html": "  <h4>1 &ndash; 21 of 1000+ listings</h4>\n",
+  "results_count_top_html": "",
+  "results_pagination_html": "",
+  "facets": {
+    "neighborhood_facet": [ [ "Battery Park City", [ "Battery Park City", 87 ] ] ],
+    "top_neighborhoods": [ [ "Brooklyn", [ "Brooklyn", 6732 ] ] ],
+    "room_type": [ [ "Shared room", [ "Shared room", 513 ] ] ],
+    "property_type_id": [ [ 1, [ "Apartment", 19308 ] ] ],
+    "hosting_amenity_ids": [ [ 5, [ "Air Conditioning", 16763 ] ] ],
+    "top_amenities": [ [ 8, [ "Kitchen", 18393 ] ] ],
+    "languages": [ [ 1024, [ "Português", 718 ] ] ],
+    "connected": [ [ 1, 0 ] ]
+  },
+  "sort": 0,
+  "center_lat": 40.7143528,
+  "center_lng": -74.00597309999999,
+  "geocode_precision": "city",
+  "breadcrumbs": [
+    [ "United States", "United States" ],
+    [ "New York", "New York, United States" ],
+    [ "New York", "New York, NY" ]
+  ],
+  "properties": [
+    {
+      "address": "New York",
+      "neighborhood": {
+        "id": 662,
+        "name": "Hell's Kitchen"
+      },
+      "has_video": false,
+      "id": 900691,
+      "lat": 40.75747813141989,
+      "lng": -73.99101412904595,
+      "name": "Times Square, Queen Bed, Big Futon!",
+      "other_review_count": 0,
+      "picture_ids": [
+        17092928
+      ],
+      "price": 99,
+      "review_count": 24,
+      "room_type": "Entire home/apt",
+      "thumbnail_url": "https://a2.muscache.com/pictures/13242220/x_small.jpg",
+      "user": {
+        "id": 4810767,
+        "is_superhost": false,
+        "name": "Joshua",
+        "thumbnail_url": "https://a2.muscache.com/users/4810767/profile_pic/1369168549/tiny.jpg"
+      },
+      "not_staggered": true
+    },
+    {
+      "address": "New York",
+      "neighborhood": {
+        "id": 669,
+        "name": "Upper East Side"
+      },
+      "has_video": false,
+      "id": 983185,
+      "lat": 40.77053825662601,
+      "lng": -73.95756516030228,
+      "name": "Furnished PRIVATE Studio Apt #14",
+      "other_review_count": 131,
+      "picture_ids": [
+        14728715
+      ],
+      "price": 125,
+      "review_count": 16,
+      "room_type": "Entire home/apt",
+      "thumbnail_url": "https://a2.muscache.com/pictures/14728683/x_small.jpg",
+      "user": {
+        "id": 465070,
+        "is_superhost": false,
+        "name": "David",
+        "thumbnail_url": "https://a0.muscache.com/users/465070/profile_pic/1369281362/tiny.jpg"
+      },
+      "instant_book": true,
+      "not_staggered": true
+    }
+  ],
+  "uniqueHostingsCount": 3126
+}

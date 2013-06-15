@@ -1,23 +1,33 @@
-require 'rest_client'
-
 module Airbnb
-  class City
+  class City < Base
     def initialize(permalink)
       @permalink = permalink
     end
 
     def permalink
-      data['city']['permalink']
+      @permalink
     end
 
-    def bounds
-      data['city']['bounds']
+    def name
+      meta.city.name
+    end
+
+    def id
+      meta.city.id
+    end
+
+    def properties(params = {})
+      search(params).properties.map{|property| Airbnb::Property.new(property) }
     end
 
     private
 
-    def data
-      @data ||= JSON.parse(RestClient.get("https://www.airbnb.com/locations/#{@permalink}/neighborhood-traits.json", {:accept => :json}))
+    def meta
+      @meta ||= request("locations/#{@permalink}/neighborhood-traits")
+    end
+
+    def search(options = {})
+      fetch('search/ajax_get_results', { :location => name }.merge(options))
     end
   end
 end

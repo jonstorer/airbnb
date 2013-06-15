@@ -1,14 +1,11 @@
 source 'https://rubygems.org'
+gemspec
 
-gem 'rails', '3.2.13'
 gem 'rest-client', '1.6.7'
+gem 'hashie', '2.0.5'
 
-gem 'mongoid', '3.1.4'
-
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+group :test do
+  gem 'rspec'
+  gem 'webmock'
+  gem 'mocha', :require => false
 end
-
-gem 'jquery-rails'

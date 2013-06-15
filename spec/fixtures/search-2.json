@@ -1,0 +1,194 @@
+{
+  "view_type": 1,
+  "remarketing_side": 0,
+  "remarketing_language": "en",
+  "present_standby_option": false,
+  "title": "New York Vacation Rentals And Rooms For Rent - Airbnb",
+  "meta_description": "Perfect NYC pads, from designer lofts to opulent penthouses.",
+  "mini_prices": null,
+  "social_enabled": false,
+  "results_count_html": "  <h4>1 &ndash; 21 of 1000+ listings</h4>\n",
+  "results_count_top_html": "",
+  "results_pagination_html": "",
+  "facets": {
+    "neighborhood_facet": [ [ "Battery Park City", [ "Battery Park City", 87 ] ] ],
+    "top_neighborhoods": [ [ "Brooklyn", [ "Brooklyn", 6732 ] ] ],
+    "room_type": [ [ "Shared room", [ "Shared room", 513 ] ] ],
+    "property_type_id": [ [ 1, [ "Apartment", 19308 ] ] ],
+    "hosting_amenity_ids": [ [ 5, [ "Air Conditioning", 16763 ] ] ],
+    "top_amenities": [ [ 8, [ "Kitchen", 18393 ] ] ],
+    "languages": [ [ 1024, [ "Português", 718 ] ] ],
+    "connected": [ [ 1, 0 ] ]
+  },
+  "sort": 0,
+  "center_lat": 40.7143528,
+  "center_lng": -74.00597309999999,
+  "geocode_precision": "city",
+  "breadcrumbs": [
+    [ "United States", "United States" ],
+    [ "New York", "New York, United States" ],
+    [ "New York", "New York, NY" ]
+  ],
+  "properties": [
+    {
+      "address": "Brooklyn",
+      "neighborhood": {
+        "id": 1120,
+        "name": "Bushwick"
+      },
+      "has_video": false,
+      "id": 982307,
+      "lat": 40.69471503610513,
+      "lng": -73.92539725985394,
+      "name": "Southern Charm in the Big Apple",
+      "other_review_count": 0,
+      "picture_ids": [
+        14711490
+      ],
+      "price": 80,
+      "review_count": 16,
+      "room_type": "Private room",
+      "thumbnail_url": "https://a2.muscache.com/pictures/14711453/x_small.jpg",
+      "user": {
+        "id": 5380906,
+        "is_superhost": false,
+        "name": "Ana Leigh",
+        "thumbnail_url": "https://a1.muscache.com/users/5380906/profile_pic/1362790966/tiny.jpg"
+      },
+      "not_staggered": true
+    },
+    {
+      "address": "New York",
+      "neighborhood": {
+        "id": 662,
+        "name": "Hell's Kitchen"
+      },
+      "has_video": false,
+      "id": 1030603,
+      "lat": 40.766972637229586,
+      "lng": -73.98772195971877,
+      "name": "Modern 1 BR-Times Sq / Central Park",
+      "other_review_count": 1,
+      "picture_ids": [
+        15690056
+      ],
+      "price": 140,
+      "review_count": 10,
+      "room_type": "Entire home/apt",
+      "thumbnail_url": "https://a0.muscache.com/pictures/15689967/x_small.jpg",
+      "user": {
+        "id": 5668786,
+        "is_superhost": false,
+        "name": "Eng&amp;Ed",
+        "thumbnail_url": "https://a0.muscache.com/users/5668786/profile_pic/1364507828/tiny.jpg"
+      },
+      "not_staggered": true
+    }
+  ],
+  "uniqueHostingsCount": 3126
+}
+{
+  "view_type": 1,
+  "remarketing_side": 0,
+  "remarketing_language": "en",
+  "present_standby_option": false,
+  "title": "New York Vacation Rentals And Rooms For Rent - Airbnb",
+  "meta_description": "Perfect NYC pads, from designer lofts to opulent penthouses.",
+  "mini_prices": null,
+  "social_enabled": false,
+  "results_count_html": "  <h4>1 &ndash; 21 of 1000+ listings</h4>\n",
+  "results_count_top_html": "",
+  "results_pagination_html": "",
+  "facets": {
+    "neighborhood_facet": [
+      [ "Battery Park City", [ "Battery Park City", 87 ] ]
+    ],
+    "top_neighborhoods": [
+      [ "Brooklyn", [ "Brooklyn", 6732 ] ]
+    ],
+    "room_type": [
+      [ "Shared room", [ "Shared room", 513 ] ]
+    ],
+    "property_type_id": [
+      [ 1, [ "Apartment", 19308 ] ]
+    ],
+    "hosting_amenity_ids": [
+      [ 5, [ "Air Conditioning", 16763 ] ]
+    ],
+    "top_amenities": [
+      [ 8, [ "Kitchen", 18393 ] ]
+    ],
+    "languages": [
+      [ 1024, [ "Português", 718 ] ]
+    ],
+    "connected": [
+      [ 1, 0 ]
+    ]
+  },
+  "sort": 0,
+  "center_lat": 40.7143528,
+  "center_lng": -74.00597309999999,
+  "geocode_precision": "city",
+  "breadcrumbs": [
+    [ "United States", "United States" ],
+    [ "New York", "New York, United States" ],
+    [ "New York", "New York, NY" ]
+  ],
+  "properties": [
+    {
+      "address": "Brooklyn",
+      "neighborhood": {
+        "id": 1120,
+        "name": "Bushwick"
+      },
+      "has_video": false,
+      "id": 982307,
+      "lat": 40.69471503610513,
+      "lng": -73.92539725985394,
+      "name": "Southern Charm in the Big Apple",
+      "other_review_count": 0,
+      "picture_ids": [
+        14711490
+      ],
+      "price": 80,
+      "review_count": 16,
+      "room_type": "Private room",
+      "thumbnail_url": "https://a2.muscache.com/pictures/14711453/x_small.jpg",
+      "user": {
+        "id": 5380906,
+        "is_superhost": false,
+        "name": "Ana Leigh",
+        "thumbnail_url": "https://a1.muscache.com/users/5380906/profile_pic/1362790966/tiny.jpg"
+      },
+      "not_staggered": true
+    },
+    {
+      "address": "New York",
+      "neighborhood": {
+        "id": 662,
+        "name": "Hell's Kitchen"
+      },
+      "has_video": false,
+      "id": 1030603,
+      "lat": 40.766972637229586,
+      "lng": -73.98772195971877,
+      "name": "Modern 1 BR-Times Sq / Central Park",
+      "other_review_count": 1,
+      "picture_ids": [
+        15690056
+      ],
+      "price": 140,
+      "review_count": 10,
+      "room_type": "Entire home/apt",
+      "thumbnail_url": "https://a0.muscache.com/pictures/15689967/x_small.jpg",
+      "user": {
+        "id": 5668786,
+        "is_superhost": false,
+        "name": "Eng&amp;Ed",
+        "thumbnail_url": "https://a0.muscache.com/users/5668786/profile_pic/1364507828/tiny.jpg"
+      },
+      "not_staggered": true
+    }
+  ],
+  "uniqueHostingsCount": 3126
+}
