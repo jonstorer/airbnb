@@ -1,6 +1,7 @@
+require 'rubygems'
 require 'json'
-require 'hashie'
 require 'httparty'
+require 'hashie'
 
 require 'airbnb/version'
 require 'airbnb/base'

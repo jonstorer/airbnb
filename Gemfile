@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 gemspec
 
-gem 'rest-client', '1.6.7'
-gem 'httparty',    '0.11.0'
-gem 'hashie',      '2.0.5'
+gem 'hashie',   '2.0.5'
+gem 'httparty', '0.11.0'
+gem 'json',     '1.8.0'
 
 group :test do
   gem 'rspec'
