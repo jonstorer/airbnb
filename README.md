@@ -6,9 +6,8 @@ A library to paginate through properties.
 Uses
 ---
 
-    properties = Airbnb.Properties.fetch(:page => 1, :per_page => 1))
-    properties.size.should == 1 # => true
-    property = properties.first
+    property = Airbnb.Properties.fetch(:page => 1).first
+
     property.address                          => '123 Main St.'
     property.amenities                        => [ "Internet",
                                                    "Wireless Internet",
