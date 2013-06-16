@@ -1,18 +1,35 @@
 module Airbnb
   class Property < Base
+    attr_reader :id, :error
 
     ATTRIBUTES = [
       :address,
+      :amenities,
+      :amenities_ids,
+      :bathrooms,
       :bed_type,
       :bedrooms,
       :beds,
+      :calendar_updated_at,
+      :cancel_policy,
+      :cancel_policy_short_str,
       :cancellation_policy,
+      :check_in_time,
+      :check_out_time,
       :city,
       :country,
       :country_code,
-      :id,
-      :thumbnail_url,
+      :description,
+      :error,
+      :guests_included,
+      :hosting_native_currency,
+      :hosting_price_native,
+      :house_rules,
       :instant_bookable,
+      :is_location_exact,
+      :lat,
+      :license,
+      :lng,
       :max_nights,
       :max_nights_input_value,
       :min_nights,
@@ -45,27 +62,11 @@ module Airbnb
       :smart_location,
       :square_feet,
       :state,
-      :license,
-      :lng,
-      :lat,
-      :is_location_exact,
-      :house_rules,
-      :user_id,
+      :thumbnail_url,
       :user,
+      :user_id,
       :weekly_price_native,
-      :zipcode,
-      :description,
-      :guests_included,
-      :hosting_native_currency,
-      :hosting_price_native,
-      :check_in_time,
-      :check_out_time,
-      :amenities,
-      :amenities_ids,
-      :bathrooms,
-      :calendar_updated_at,
-      :cancel_policy,
-      :cancel_policy_short_str
+      :zipcode
     ]
 
     def self.count
@@ -78,6 +79,11 @@ module Airbnb
     end
 
     def initialize(attributes)
+      @id    = attributes.id
+      @error = attributes.error
+
+      raise ArgumentError.new('id is required') if @error.nil? && @id.nil?
+
       ATTRIBUTES.each do |key|
         instance_variable_set("@#{key}", attributes[key])
       end
@@ -89,23 +95,7 @@ module Airbnb
       end
     end
 
-    def latitude
-      @lat
-    end
-
-    def longitude
-      @lng
-    end
-
-    def picture_url(size = :small)
-      "https://a2.muscache.com/pictures/#{cover_photo_id}/#{size}.jpg"
-    end
-
     private
-
-    def cover_photo_id
-      @thumbnail_url.match(/\/(\d+)\//)[1]
-    end
 
     def update
       attributes = get("/listings/#{@id}").listing
@@ -122,7 +112,22 @@ module Airbnb
         :offset         => ( per_page * (page - 1) ),
         :items_per_page => per_page
       }
-      Hashie::Mash.new(self.get('/listings/search', options))
+
+      response = self.get('/listings/search', options).parsed_response
+
+      if response.is_a?(String)
+        response = {
+          :listings_count => 0,
+          :listings => [
+            {
+              :listing => {
+                :error => response.strip
+              }
+            }
+          ]
+        }
+      end
+      Hashie::Mash.new(response)
     end
   end
 end
