@@ -1,5 +1,7 @@
-https://www.airbnb.com/locations/api/neighborhood_tiles_by_point.json?point[lat]=40.65&point[lon]=-73.95
-https://www.airbnb.com/locations/api/neighborhood_tiles.json?ids[]=1120&ids[]=1150&ids[]=1124&ids[]=1228&ids[]=2545&ids[]=961&ids[]=1262
-https://www.airbnb.com/locations/api/city_by_point?point[lat]=40.7143528&point[lon]=-74.00597309999999
-https://www.airbnb.com/locations/new-york/neighborhood-traits.json
-https://www.airbnb.com/search/ajax_get_results?search_view=1&min_bedrooms=0&min_bathrooms=0&min_beds=0&page=2&location=New+York%2C+NY&checkin=&checkout=&guests=1&sort=0&keywords=&price_min=&price_max=&per_page=21
+https://m.airbnb.com/api/v1/listings/search?offset=0&items_per_page=0
+https://m.airbnb.com/api/v1/listings/search?location=&number_of_guests=1&offset=0&checkin=2013-12-11&checkout=2013-12-14&items_per_page=20
+https://m.airbnb.com/api/v1/listings/977761
+https://m.airbnb.com/api/v1/listings/977761/reviews?offset=0&items_per_page=10
+https://m.airbnb.com/api/v1/listings/977761/unavailabilities
+https://m.airbnb.com/api/v1/listings/977761/available?checkin=2013-12-11&checkout=2013-12-14&number_of_guests=1
+https://m.airbnb.com/api/v1/users/3241277

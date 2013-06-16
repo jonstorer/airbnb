@@ -1,0 +1,30 @@
+{
+  "extras_price": "",
+  "new_manage_listing": false,
+  "preview_bar_phrases": {
+    "steps_remaining": "<strong> step</strong> to list||||<strong> steps</strong> to list"
+  },
+  "is_flagged_by_user": false,
+  "user_is_admin": false,
+  "is_owned_by_user": false,
+  "is_instant_bookable": false,
+  "lat": 41.940144,
+  "lng": -87.650726,
+  "localized_people_pricing_description": "$15 / night after 2 guests",
+  "monthly_price": "$1700",
+  "monthly_price_with_code": "$1700 USD",
+  "nightly_price": "$99",
+  "security_deposit": "",
+  "social_connections": {
+    "connected": null
+  },
+  "staggered_price": "$1827",
+  "sublet_html": "",
+  "weekly_price": "$693",
+  "weekly_price_with_code": "$693 USD",
+  "show_disaster_info": false,
+  "needs_to_message": false,
+  "cancellation_policy": "Moderate",
+  "cancellation_policy_link": "/home/cancellation_policies#moderate",
+  "hide_p3_similar_listings": false
+}

@@ -1,0 +1,137 @@
+{
+  "listings_count": 21485,
+  "listings": [
+    {
+      "listing": {
+        "id": 900691,
+        "city": "New York",
+        "picture_url": "https://a2.muscache.com/pictures/13242220/large.jpg",
+        "thumbnail_url": "https://a1.muscache.com/pictures/13242220/small.jpg",
+        "medium_url": "https://a2.muscache.com/pictures/13242220/medium.jpg",
+        "xl_picture_url": "https://a1.muscache.com/pictures/13242220/x_large.jpg",
+        "price": 99,
+        "native_currency": "USD",
+        "price_native": 99,
+        "price_formatted": "$99",
+        "lat": 40.75747813141989,
+        "lng": -73.99101412904595,
+        "country": "United States",
+        "name": "Times Square, Queen Bed, Big Futon!",
+        "smart_location": "New York, NY",
+        "instant_bookable": false,
+        "bedrooms": 1,
+        "beds": 1,
+        "neighborhood": "Hell's Kitchen",
+        "person_capacity": 4,
+        "state": "NY",
+        "user_id": 4810767,
+        "zipcode": "10036",
+        "user": {
+          "user": {
+            "id": 4810767,
+            "first_name": "Joshua",
+            "picture_url": "https://a2.muscache.com/users/4810767/profile_pic/1369168549/square_225.jpg",
+            "has_profile_pic": true
+          }
+        },
+        "address": "West 43rd Street, New York, NY 10036, United States",
+        "country_code": "US",
+        "cancellation_policy": "strict",
+        "property_type": "Apartment",
+        "reviews_count": 25,
+        "room_type": "Entire home/apt",
+        "room_type_category": "entire_home",
+        "picture_urls": [
+          "https://a2.muscache.com/pictures/13242220/large.jpg",
+          "https://a1.muscache.com/pictures/13242094/large.jpg",
+          "https://a0.muscache.com/pictures/13242080/large.jpg"
+        ],
+        "thumbnail_urls": [
+          "https://a1.muscache.com/pictures/13242220/small.jpg",
+          "https://a1.muscache.com/pictures/13242094/small.jpg",
+          "https://a0.muscache.com/pictures/13242080/small.jpg"
+        ],
+        "xl_picture_urls": [
+          "https://a1.muscache.com/pictures/13242220/x_large.jpg",
+          "https://a2.muscache.com/pictures/13242094/x_large.jpg",
+          "https://a1.muscache.com/pictures/13242080/x_large.jpg"
+        ],
+        "picture_count": 15
+      }
+    },
+    {
+      "listing": {
+        "id": 982307,
+        "city": "Brooklyn",
+        "picture_url": "https://a1.muscache.com/pictures/14711453/large.jpg",
+        "thumbnail_url": "https://a0.muscache.com/pictures/14711453/small.jpg",
+        "medium_url": "https://a1.muscache.com/pictures/14711453/medium.jpg",
+        "xl_picture_url": "https://a1.muscache.com/pictures/14711453/x_large.jpg",
+        "price": 80,
+        "native_currency": "USD",
+        "price_native": 80,
+        "price_formatted": "$80",
+        "lat": 40.69471503610513,
+        "lng": -73.92539725985394,
+        "country": "United States",
+        "name": "Southern Charm in the Big Apple",
+        "smart_location": "Brooklyn, NY",
+        "instant_bookable": false,
+        "bedrooms": 1,
+        "beds": 2,
+        "neighborhood": "Bushwick",
+        "person_capacity": 4,
+        "state": "NY",
+        "user_id": 5380906,
+        "zipcode": "11221",
+        "user": {
+          "user": {
+            "id": 5380906,
+            "first_name": "Ana Leigh",
+            "picture_url": "https://a1.muscache.com/users/5380906/profile_pic/1362790966/square_225.jpg",
+            "has_profile_pic": true
+          }
+        },
+        "address": "Evergreen Avenue, Brooklyn, NY 11221, United States",
+        "country_code": "US",
+        "cancellation_policy": "moderate",
+        "property_type": "Apartment",
+        "reviews_count": 16,
+        "room_type": "Private room",
+        "room_type_category": "private_room",
+        "picture_urls": [
+          "https://a1.muscache.com/pictures/14711453/large.jpg",
+          "https://a2.muscache.com/pictures/14711455/large.jpg",
+          "https://a2.muscache.com/pictures/14711458/large.jpg"
+        ],
+        "thumbnail_urls": [
+          "https://a0.muscache.com/pictures/14711453/small.jpg",
+          "https://a2.muscache.com/pictures/14711455/small.jpg",
+          "https://a1.muscache.com/pictures/14711458/small.jpg"
+        ],
+        "xl_picture_urls": [
+          "https://a1.muscache.com/pictures/14711453/x_large.jpg",
+          "https://a2.muscache.com/pictures/14711455/x_large.jpg",
+          "https://a1.muscache.com/pictures/14711458/x_large.jpg"
+        ],
+        "picture_count": 10
+      }
+    }
+  ],
+  "facets": { },
+  "geography": {
+    "precision": "city",
+    "country_code": "US",
+    "country": "United States",
+    "state": "New York",
+    "city": "New York",
+    "lat": 40.7143528,
+    "lng": -74.00597309999999
+  },
+  "meta": {
+    "price_type": "nightly",
+    "price_range_min_native": 10,
+    "price_range_max_native": 300,
+    "native_currency": "USD"
+  }
+}
