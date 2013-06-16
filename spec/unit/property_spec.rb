@@ -11,13 +11,44 @@ describe Airbnb::Property, '.fetch' do
   subject { Airbnb::Property }
   before  { stub_get(:path => '/api/v1/listings/search', :file => 'search') }
 
-  it 'returns properties' do
-    properties = subject.fetch(:page => 1, :per_page => 20 )
-    properties.map(&:class).uniq.should =~ [Airbnb::Property]
+  context 'success' do
+    before { stub_get(:path => '/api/v1/listings/search', :file => 'search') }
+
+    it 'returns properties' do
+      properties = subject.fetch(:page => 1, :per_page => 20 )
+      properties.map(&:class).uniq.should =~ [Airbnb::Property]
+    end
+  end
+
+  context 'success' do
+    before { stub_get(:path => '/api/v1/listings/search', :file => 'failed_search') }
+
+    it 'returns error properties when there are errors' do
+      properties = subject.fetch(:page => 1, :per_page => 20)
+      properties.count.should == 1
+      properties.first.error.should == 'FUBAR'
+      properties.first.id.should    == nil
+    end
   end
 end
 
-describe Airbnb::Property, 'attributes' do
+describe Airbnb::Property, '#new' do
+  subject     { Airbnb::Property }
+  let(:error) { ArgumentError.new('id is required') }
+  before      { ArgumentError.stubs(:new => error) }
+
+  it 'requires an id' do
+    expect { subject.new(Hashie::Mash.new({})) }.to raise_error(error)
+  end
+
+  it 'returns an empty object with errors' do
+    property = subject.new(Hashie::Mash.new({:error => 'FUBAR'}))
+    property.id.should be_nil
+    property.error.should == 'FUBAR'
+  end
+end
+
+describe Airbnb::Property do
   subject          { Airbnb::Property.new(attributes) }
   let(:attributes) do
     json = File.read('./spec/fixtures/search.json')
@@ -25,7 +56,9 @@ describe Airbnb::Property, 'attributes' do
     Hashie::Mash.new(hash).listings.first.listing
   end
 
-  before { stub_get(:path => '/api/v1/listings/900691', :file => 'listing-900961') }
+  before do
+    stub_get(:path => '/api/v1/listings/900691', :file => 'listing-900961')
+  end
 
   #its(:user)                            { should == '' }
   its(:address)                          { should == 'West 43rd Street, New York, NY 10036, United States' }
@@ -52,9 +85,9 @@ describe Airbnb::Property, 'attributes' do
   its(:id)                               { should == 900691 }
   its(:instant_bookable)                 { should == false }
   its(:is_location_exact)                { should == true }
-  its(:latitude)                         { should == 40.75747813141989 }
+  its(:lat)                              { should == 40.75747813141989 }
   its(:license)                          { should == nil }
-  its(:longitude)                        { should == -73.99101412904595 }
+  its(:lng)                              { should == -73.99101412904595 }
   its(:max_nights)                       { should == 30 }
   its(:max_nights_input_value)           { should == 30 }
   its(:min_nights)                       { should == 1 }
@@ -91,10 +124,4 @@ describe Airbnb::Property, 'attributes' do
   #its(:user)                             { should == '' }
   its(:weekly_price_native)              { should == nil }
   its(:zipcode)                          { should == '10036' }
-
-  [:small, :medium, :large, :x_large].each do |size|
-    it "returns the #{size} #picture_url" do
-      subject.picture_url(size).should == "https://a2.muscache.com/pictures/13242220/#{size}.jpg"
-    end
-  end
 end
