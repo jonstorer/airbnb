@@ -20,7 +20,6 @@ module Airbnb
       :country,
       :country_code,
       :description,
-      :error,
       :guests_included,
       :hosting_native_currency,
       :hosting_price_native,
@@ -69,12 +68,12 @@ module Airbnb
       :zipcode
     ]
 
-    def self.count
-      data.listings_count
+    def self.count(params = {})
+      data(params).listings_count
     end
 
     def self.fetch(params = {})
-      params = { :per_page => 50, :page => 1 }.merge(params)
+      params = { :per_page => 10, :page => 1 }.merge(params)
       data(params).listings.map{ |listing| new(listing.listing) }
     end
 
@@ -91,7 +90,12 @@ module Airbnb
 
     ATTRIBUTES.each do |key|
       define_method key do
-        instance_variable_get("@#{key}") || update && instance_variable_get("@#{key}")
+        res = instance_variable_get("@#{key}")
+        unless res
+          update
+          res = instance_variable_get("@#{key}")
+        end
+        res
       end
     end
 
@@ -105,15 +109,18 @@ module Airbnb
     end
 
     def self.data(params = {})
-      per_page = params[:per_page] || 20
+      per_page = params[:per_page] || 10
       page     = params[:page]     || 1
 
       options = {
-        :offset         => ( per_page * (page - 1) ),
-        :items_per_page => per_page
+        :offset           => ( per_page * (page - 1) ),
+        :items_per_page   => per_page,
+        :location         => params[:location],
+        :number_of_guests => 1
       }
 
-      response = self.get('/listings/search', options).parsed_response
+      response = self.get('/listings/search', { :query => options })
+      response = response.parsed_response
 
       if response.is_a?(String)
         response = {
