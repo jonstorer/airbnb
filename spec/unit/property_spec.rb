@@ -2,26 +2,33 @@ require 'spec_helper'
 
 describe Airbnb::Property do
   subject { Airbnb::Property }
-  before  { stub_get(:path => '/api/v1/listings/search', :file => 'search') }
-
+  before  { stub_get(:path => '/api/v1/listings/search?items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search') }
   its(:count) { should == 21485 }
 end
 
 describe Airbnb::Property, '.fetch' do
   subject { Airbnb::Property }
-  before  { stub_get(:path => '/api/v1/listings/search', :file => 'search') }
 
   context 'success' do
-    before { stub_get(:path => '/api/v1/listings/search', :file => 'search') }
+    before { stub_get(:path => '/api/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'search') }
 
     it 'returns properties' do
-      properties = subject.fetch(:page => 1, :per_page => 20 )
+      properties = subject.fetch(:page => 1, :per_page => 20)
+      properties.map(&:class).uniq.should =~ [Airbnb::Property]
+    end
+  end
+
+  context 'by location' do
+    before { stub_get(:path => '/api/v1/listings/search?items_per_page=10&location=West+LA&number_of_guests=1&offset=0', :file => 'search') }
+
+    it 'returns properties' do
+      properties = subject.fetch(:location => 'West LA')
       properties.map(&:class).uniq.should =~ [Airbnb::Property]
     end
   end
 
   context 'success' do
-    before { stub_get(:path => '/api/v1/listings/search', :file => 'failed_search') }
+    before { stub_get(:path => '/api/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'failed_search') }
 
     it 'returns error properties when there are errors' do
       properties = subject.fetch(:page => 1, :per_page => 20)
