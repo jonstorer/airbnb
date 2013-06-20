@@ -90,7 +90,12 @@ module Airbnb
 
     ATTRIBUTES.each do |key|
       define_method key do
-        instance_variable_get("@#{key}") || update && instance_variable_get("@#{key}")
+        res = instance_variable_get("@#{key}")
+        unless res
+          update
+          res = instance_variable_get("@#{key}")
+        end
+        res
       end
     end
 
