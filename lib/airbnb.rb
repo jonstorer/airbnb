@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'cgi'
 require 'json'
 require 'httparty'
 require 'hashie'

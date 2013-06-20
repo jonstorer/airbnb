@@ -1,5 +1,3 @@
-require 'cgi'
-
 module Airbnb
   class Base
     include HTTParty
