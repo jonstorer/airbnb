@@ -13,6 +13,6 @@ end
 def stub_get(opts)
   opts = opts.merge(:format => 'json')
   data = File.read("./spec/fixtures/#{opts[:file]}.json")
-  url  = %r{https://m.airbnb.com#{opts[:path]}}
+  url  = "https://m.airbnb.com#{opts[:path]}"
   stub_request(:get, url).to_return(:body => data)
 end
