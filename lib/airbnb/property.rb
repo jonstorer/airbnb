@@ -115,7 +115,6 @@ module Airbnb
       }
 
       response = self.get('/listings/search', { :query => options })
-      response = response.parsed_response
 
       if response.is_a?(String)
         response = {
