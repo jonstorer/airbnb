@@ -78,8 +78,9 @@ module Airbnb
     end
 
     def initialize(attributes)
-      @id    = attributes.id
-      @error = attributes.error
+      attributes = Hashie::Mash.new(attributes)
+      @id        = attributes.id
+      @error     = attributes.error
 
       raise ArgumentError.new('id is required') if @error.nil? && @id.nil?
 
@@ -115,7 +116,6 @@ module Airbnb
       }
 
       response = self.get('/listings/search', { :query => options })
-      response = response.parsed_response
 
       if response.is_a?(String)
         response = {

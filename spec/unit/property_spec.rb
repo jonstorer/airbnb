@@ -45,11 +45,11 @@ describe Airbnb::Property, '#new' do
   before      { ArgumentError.stubs(:new => error) }
 
   it 'requires an id' do
-    expect { subject.new(Hashie::Mash.new({})) }.to raise_error(error)
+    expect { subject.new({}) }.to raise_error(error)
   end
 
   it 'returns an empty object with errors' do
-    property = subject.new(Hashie::Mash.new({:error => 'FUBAR'}))
+    property = subject.new({:error => 'FUBAR'})
     property.id.should be_nil
     property.error.should == 'FUBAR'
   end
