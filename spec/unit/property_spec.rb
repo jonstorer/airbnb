@@ -45,13 +45,41 @@ describe Airbnb::Property, '.fetch' do
     properties.all?.should be_true
   end
 
-  it 'can search by room_types'
+  it 'can search by room_types' do
+    stub_get(:path => '/api/v1/listings/search?room_types%5B%5D=Private+room&room_types%5B%5D=Shared+room&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:room_types => ['Private Room', 'Shared room'])
+    properties.all?.should be_true
+  end
 
-  it 'can search by min_beds'
-  it 'can search by min_bedrooms'
-  it 'can search by min_bathrooms'
-  it 'can search by price_min'
-  it 'can search by price_max'
+  it 'can search by min_beds' do
+    stub_get(:path => '/api/v1/listings/search?min_beds=2&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:min_beds => 2)
+    properties.all?.should be_true
+  end
+
+  it 'can search by min_bedrooms' do
+    stub_get(:path => '/api/v1/listings/search?min_bedrooms=2&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:min_bedrooms => 2)
+    properties.all?.should be_true
+  end
+
+  it 'can search by min_bathrooms' do
+    stub_get(:path => '/api/v1/listings/search?min_bathrooms=2&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:min_bathrooms => 2)
+    properties.all?.should be_true
+  end
+
+  it 'can search by price_min' do
+    stub_get(:path => '/api/v1/listings/search?price_min=20&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:price_min => 20)
+    properties.all?.should be_true
+  end
+
+  it 'can search by price_max' do
+    stub_get(:path => '/api/v1/listings/search?price_max=200&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:price_max => 200)
+    properties.all?.should be_true
+  end
 
   context 'error' do
     before { stub_get(:path => '/api/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'failed_search') }
