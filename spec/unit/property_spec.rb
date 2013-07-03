@@ -9,25 +9,80 @@ end
 describe Airbnb::Property, '.fetch' do
   subject { Airbnb::Property }
 
-  context 'success' do
-    before { stub_get(:path => '/api/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'search') }
-
-    it 'returns properties' do
-      properties = subject.fetch(:page => 1, :per_page => 20)
-      properties.map(&:class).uniq.should =~ [Airbnb::Property]
-    end
+  it 'returns properties' do
+    stub_get(:path => '/api/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:page => 1, :per_page => 20)
+    properties.map(&:class).uniq.should =~ [Airbnb::Property]
   end
 
-  context 'by location' do
-    before { stub_get(:path => '/api/v1/listings/search?items_per_page=10&location=West+LA&number_of_guests=1&offset=0', :file => 'search') }
-
-    it 'returns properties' do
-      properties = subject.fetch(:location => 'West LA')
-      properties.map(&:class).uniq.should =~ [Airbnb::Property]
-    end
+  it 'can search with location' do
+    stub_get(:path => '/api/v1/listings/search?items_per_page=10&location=West+LA&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:location => 'West LA')
+    properties.all?.should be_true
   end
 
-  context 'success' do
+  it 'can search by number of guests' do
+    stub_get(:path => '/api/v1/listings/search?items_per_page=10&location=&number_of_guests=10&offset=0', :file => 'search')
+    properties = subject.fetch(:number_of_guests => 10)
+    properties.all?.should be_true
+  end
+
+  it 'can search by page' do
+    stub_get(:path => '/api/v1/listings/search?items_per_page=10&location=&number_of_guests=1&offset=620', :file => 'search')
+    properties = subject.fetch(:page => 63)
+    properties.all?.should be_true
+  end
+
+  it 'can search by per_page' do
+    stub_get(:path => '/api/v1/listings/search?items_per_page=63&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:per_page => 63)
+    properties.all?.should be_true
+  end
+
+  it 'can search by checkin_in & checkin_out' do
+    stub_get(:path => '/api/v1/listings/search?checkin_in=2014-03-03&checkin_out=2014-04-03&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:checkin_in => Date.parse('3/3/2014'), :checkin_out => Date.parse('3/4/2014'))
+    properties.all?.should be_true
+  end
+
+  it 'can search by room_types' do
+    pending 'connection agent adds indexes to array encoded params'
+    stub_get(:path => '/api/v1/listings/search?room_types%5B%5D=Private+room&room_types%5B%5D=Shared+room&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:room_types => ['Private Room', 'Shared room'])
+    properties.all?.should be_true
+  end
+
+  it 'can search by min_beds' do
+    stub_get(:path => '/api/v1/listings/search?min_beds=2&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:min_beds => 2)
+    properties.all?.should be_true
+  end
+
+  it 'can search by min_bedrooms' do
+    stub_get(:path => '/api/v1/listings/search?min_bedrooms=2&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:min_bedrooms => 2)
+    properties.all?.should be_true
+  end
+
+  it 'can search by min_bathrooms' do
+    stub_get(:path => '/api/v1/listings/search?min_bathrooms=2&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:min_bathrooms => 2)
+    properties.all?.should be_true
+  end
+
+  it 'can search by price_min' do
+    stub_get(:path => '/api/v1/listings/search?price_min=20&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:price_min => 20)
+    properties.all?.should be_true
+  end
+
+  it 'can search by price_max' do
+    stub_get(:path => '/api/v1/listings/search?price_max=200&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
+    properties = subject.fetch(:price_max => 200)
+    properties.all?.should be_true
+  end
+
+  context 'error' do
     before { stub_get(:path => '/api/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'failed_search') }
 
     it 'returns error properties when there are errors' do
