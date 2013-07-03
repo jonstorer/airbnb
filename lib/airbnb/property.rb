@@ -16,7 +16,7 @@ module Airbnb
       :items_per_page,
       :checkin_in,
       :checkin_out,
-      :room_types,
+     # :room_types,
       :min_beds,
       :min_bedrooms,
       :min_bathrooms,
