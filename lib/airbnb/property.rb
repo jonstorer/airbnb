@@ -2,6 +2,28 @@ module Airbnb
   class Property < Base
     attr_reader :id, :error
 
+    DEFAULT_SEARCH_OPTIONS = {
+      :offset           => 0,
+      :items_per_page   => 20,
+      :location         => nil,
+      :number_of_guests => 1
+    }
+
+    ALLOWED_SEARCH_OPTIONS = [
+      :location,
+      :number_of_guests,
+      :offset,
+      :items_per_page,
+      :checkin_in,
+      :checkin_out,
+     # :room_types,
+      :min_beds,
+      :min_bedrooms,
+      :min_bathrooms,
+      :price_min,
+      :price_max
+    ]
+
     ATTRIBUTES = [
       :address,
       :amenities,
@@ -105,15 +127,16 @@ module Airbnb
     end
 
     def self.data(params = {})
+      options  = DEFAULT_SEARCH_OPTIONS.merge(params)
+
       per_page = params[:per_page] || 10
       page     = params[:page]     || 1
+      offset   = ( per_page * (page - 1) )
 
-      options = {
-        :offset           => ( per_page * (page - 1) ),
-        :items_per_page   => per_page,
-        :location         => params[:location],
-        :number_of_guests => 1
-      }
+      options[:offset]         = offset
+      options[:items_per_page] = per_page
+
+      options = sanatize options, ALLOWED_SEARCH_OPTIONS
 
       response = self.get('/listings/search', { :query => options })
 
