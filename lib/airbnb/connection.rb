@@ -2,6 +2,7 @@ module Airbnb
   module Connection
     def self.get(path, params = {})
       url = get_url(path, params[:query])
+      puts url
       response_string = connection.get(url).body
       Hashie::Mash.new(JSON.parse(response_string)) rescue response_string
     end
