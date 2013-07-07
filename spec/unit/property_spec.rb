@@ -46,9 +46,8 @@ describe Airbnb::Property, '.fetch' do
   end
 
   it 'can search by room_types' do
-    pending 'connection agent adds indexes to array encoded params'
     stub_get(:path => '/api/v1/listings/search?room_types%5B%5D=Private+room&room_types%5B%5D=Shared+room&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
-    properties = subject.fetch(:room_types => ['Private Room', 'Shared room'])
+    properties = subject.fetch(:room_types => ['Private room', 'Shared room'])
     properties.all?.should be_true
   end
 
