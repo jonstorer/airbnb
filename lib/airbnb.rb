@@ -7,6 +7,7 @@ require 'tor-privoxy'
 require 'airbnb/version'
 require 'airbnb/connection'
 require 'airbnb/base'
+require 'airbnb/user'
 require 'airbnb/property'
 
 module Airbnb

@@ -10,7 +10,7 @@ module Airbnb
 
     private
     def sanatize(*args)
-      self.sanatize(*args)
+      self.class.sanatize(*args)
     end
 
     def self.sanatize(options, whitelist = [])
