@@ -15,4 +15,8 @@ Gem::Specification.new do |s|
   s.files        = Dir['lib/**/*']
   s.require_path = 'lib'
   s.has_rdoc     = false
+
+  s.add_dependency 'hashie',      '>= 2.0.5'
+  s.add_dependency 'json',        '>= 1.8.0'
+  s.add_dependency 'tor-privoxy', '>= 0.1.1'
 end
