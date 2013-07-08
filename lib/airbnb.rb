@@ -10,5 +10,4 @@ require 'airbnb/base'
 require 'airbnb/user'
 require 'airbnb/property'
 
-module Airbnb
-end
+module Airbnb; end

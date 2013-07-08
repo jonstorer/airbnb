@@ -6,6 +6,7 @@ module Airbnb
     ]
 
     def initialize(params)
+      @_params = params
       ATTRIBUTES.each do |key|
         instance_variable_set("@#{key}", params[key])
       end
