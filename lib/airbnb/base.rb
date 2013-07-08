@@ -9,9 +9,6 @@ module Airbnb
     end
 
     private
-    def sanatize(*args)
-      self.class.sanatize(*args)
-    end
 
     def self.sanatize(options, whitelist = [])
       blacklist_keys = options.keys - whitelist
