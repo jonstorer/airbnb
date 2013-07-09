@@ -5,7 +5,7 @@ describe Airbnb::Connection do
   let(:error) { Mechanize::ResponseReadError.new(stub('error', :message => 'mock error'), stub('response'), stub('body_io'), '/', stub('mech')) }
 
   before do
-    error.stubs(:force_parse => "{\"user\":{\"id\":1234}}")
+    error.stubs(:force_parse => stub(:body => "{\"user\":{\"id\":1234}}"))
     connection.stubs(:get).raises(error)
     TorPrivoxy::Agent.stubs(:new => connection)
   end
