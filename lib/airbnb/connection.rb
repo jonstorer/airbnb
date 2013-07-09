@@ -5,7 +5,7 @@ module Airbnb
       begin
         response = connection.get(url).body
       rescue Mechanize::ResponseReadError => error
-        response = error.body_io.read
+        response = error.force_parse
       end
       Hashie::Mash.new(JSON.parse(response)) rescue response
     end
