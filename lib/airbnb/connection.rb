@@ -2,8 +2,12 @@ module Airbnb
   module Connection
     def self.get(path, params = {})
       url = get_url(path, params[:query])
-      response_string = connection.get(url).body
-      Hashie::Mash.new(JSON.parse(response_string)) rescue response_string
+      begin
+        response = connection.get(url).body
+      rescue Mechanize::ResponseReadError => error
+        response = error.force_parse
+      end
+      Hashie::Mash.new(JSON.parse(response)) rescue response
     end
 
     private
