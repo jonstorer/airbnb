@@ -3,6 +3,7 @@ https://m.airbnb.com/api/v1/listings/977761/available?checkin=2013-12-11&checkou
 https://m.airbnb.com/api/v1/listings/977761/reviews?offset=0&items_per_page=10
 https://m.airbnb.com/api/v1/listings/977761/unavailabilities
 https://m.airbnb.com/api/v1/users/3241277
+https://m.airbnb.com/api/v1/users/1648173/reviews?offset=20&items_per_page=10
 
 https://m.airbnb.com/api/v1/listings/search?
 location=&
