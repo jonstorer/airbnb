@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Airbnb::Property do
-  subject     { Airbnb::Property }
-  before      { stub_get(:path => '/api/v1/listings/search?items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search') }
+  subject { Airbnb::Property }
+  before  { stub_get(:path => '/api/v1/listings/search?items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search') }
   its(:count) { should == 21485 }
 end
 
@@ -41,7 +41,7 @@ describe Airbnb::Property, '.fetch' do
 
   it 'can search by checkin_in & checkin_out' do
     stub_get(:path => '/api/v1/listings/search?checkin_in=2014-03-03&checkin_out=2014-04-03&items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search')
-    properties = subject.fetch(:checkin_in => '2014-03-03', :checkin_out => '2014-04-03')
+    properties = subject.fetch(:checkin_in => Date.parse('3/3/2014'), :checkin_out => Date.parse('3/4/2014'))
     properties.all?.should be_true
   end
 
