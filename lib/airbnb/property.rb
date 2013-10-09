@@ -138,7 +138,7 @@ module Airbnb
 
       options = sanatize options, ALLOWED_SEARCH_OPTIONS
 
-      response = self.get('/listings/search', { :query => options })
+      response = self.get('/listings/search', options)
 
       if response.is_a?(String)
         response = {
