@@ -3,6 +3,7 @@ require 'bundler/setup'
 
 require 'webmock/rspec'
 require 'mocha/api'
+require 'pry'
 
 require 'airbnb'
 
