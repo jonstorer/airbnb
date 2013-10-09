@@ -18,8 +18,7 @@ module Airbnb
     end
 
     def self.find(id)
-      response = get "/users/#{id}"
-      new response.user
+      new get("/users/#{id}").user
     end
   end
 end
