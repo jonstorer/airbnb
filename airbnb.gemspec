@@ -16,7 +16,9 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.has_rdoc     = false
 
-  s.add_dependency 'hashie',      '>= 2.0.5'
-  s.add_dependency 'json',        '>= 1.8.0'
-  s.add_dependency 'tor-privoxy', '>= 0.1.1'
+  s.add_dependency 'hashie',        '>= 2.0.5'
+  s.add_dependency 'json',          '>= 1.8.0'
+  s.add_dependency 'rest-client',   '>= 1.6.7'
+  s.add_dependency 'addressable',   '>= 2.3.5'
+  s.add_dependency 'activesupport', '>= 4.0.0'
 end
