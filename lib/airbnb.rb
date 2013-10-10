@@ -8,11 +8,14 @@ require 'active_support/core_ext/object/try'
 require 'active_support/core_ext/module/delegation'
 require 'active_support/concern'
 
+require 'airbnb/lib/resource'
+require 'airbnb/lib/search'
 require 'airbnb/lib/property'
+
 require 'airbnb/version'
 require 'airbnb/connection'
 require 'airbnb/base'
 require 'airbnb/user'
-require 'airbnb/property'
+require 'airbnb/listing'
 
 module Airbnb; end

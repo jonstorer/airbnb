@@ -1,5 +1,7 @@
 module Airbnb
-  class Property < Base
+  class Listing < Base
+    include Lib::Resource
+    include Lib::Search
     include Lib::Property
 
     resource do |routes|

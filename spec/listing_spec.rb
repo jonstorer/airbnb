@@ -1,18 +1,18 @@
 require 'spec_helper'
 
-describe Airbnb::Property do
-  subject { Airbnb::Property }
+describe Airbnb::Listing do
+  subject { Airbnb::Listing }
   before  { stub_get(:path => '/api/-/v1/listings/search?items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search') }
   its(:count) { should == 21485 }
 end
 
-describe Airbnb::Property, '.fetch' do
-  subject { Airbnb::Property }
+describe Airbnb::Listing, '.fetch' do
+  subject { Airbnb::Listing }
 
   it 'returns properties' do
     stub_get(:path => '/api/-/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'search')
     properties = subject.fetch(:page => 1, :per_page => 20)
-    properties.map(&:class).uniq.should =~ [Airbnb::Property]
+    properties.map(&:class).uniq.should =~ [Airbnb::Listing]
   end
 
   it 'can search with location' do
@@ -82,8 +82,8 @@ describe Airbnb::Property, '.fetch' do
   end
 end
 
-describe Airbnb::Property do
-  subject          { Airbnb::Property.new(attributes) }
+describe Airbnb::Listing do
+  subject          { Airbnb::Listing.new(attributes) }
   let(:attributes) do
     json = File.read('./spec/fixtures/search.json')
     hash = JSON.parse(json)
