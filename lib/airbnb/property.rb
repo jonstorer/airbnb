@@ -99,6 +99,10 @@ module Airbnb
       data(params).listings.map{ |listing| new(listing.listing) }
     end
 
+    def self.find(airbnb_id)
+      get("/listings/#{airbnb_id}").listing
+    end
+
     def initialize(attributes)
       attributes = Hashie::Mash.new(attributes)
       @id        = attributes.id
@@ -120,7 +124,7 @@ module Airbnb
     private
 
     def update
-      attributes = get("/listings/#{@id}").listing
+      attributes = self.class.find(@id)
       ATTRIBUTES.each do |key|
         instance_variable_set("@#{key}", attributes[key]) unless instance_variable_get("@#{key}")
       end

@@ -6,6 +6,13 @@ describe Airbnb::Property do
   its(:count) { should == 21485 }
 end
 
+describe Airbnb::Property, '.find' do
+  it 'finds properties by id' do
+    stub_get(:path => '/api/-/v1/listings/900691', :file => 'listing-900961')
+    Airbnb::Property.find(900691).id.should == 900691
+  end
+end
+
 describe Airbnb::Property, '.fetch' do
   subject { Airbnb::Property }
 
