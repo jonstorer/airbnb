@@ -7,10 +7,11 @@ describe Airbnb::Property do
 end
 
 describe Airbnb::Property, '.find' do
-  it 'finds properties by id' do
-    stub_get(:path => '/api/-/v1/listings/900691', :file => 'listing-900961')
-    Airbnb::Property.find(900691).id.should == 900691
-  end
+  subject { Airbnb::Property.find(900691) }
+  before  { stub_get(:path => '/api/-/v1/listings/900691', :file => 'listing-900961') }
+
+  its(:id)    { should == 900691 }
+  its(:class) { should == Airbnb::Property }
 end
 
 describe Airbnb::Property, '.fetch' do
