@@ -80,33 +80,6 @@ describe Airbnb::Property, '.fetch' do
     properties = subject.fetch(:price_max => 200)
     properties.all?.should be_true
   end
-
-  context 'error' do
-    before { stub_get(:path => '/api/-/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'failed_search') }
-
-    it 'returns error properties when there are errors' do
-      properties = subject.fetch(:page => 1, :per_page => 20)
-      properties.count.should == 1
-      properties.first.error.should == 'FUBAR'
-      properties.first.id.should    == nil
-    end
-  end
-end
-
-describe Airbnb::Property, '#new' do
-  subject     { Airbnb::Property }
-  let(:error) { ArgumentError.new('id is required') }
-  before      { ArgumentError.stubs(:new => error) }
-
-  it 'requires an id' do
-    expect { subject.new({}) }.to raise_error(error)
-  end
-
-  it 'returns an empty object with errors' do
-    property = subject.new({:error => 'FUBAR'})
-    property.id.should be_nil
-    property.error.should == 'FUBAR'
-  end
 end
 
 describe Airbnb::Property do

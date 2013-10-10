@@ -1,6 +1,70 @@
 module Airbnb
   class Property < Base
-    attr_reader :id, :error
+    include Lib::Property
+
+    property :address
+    property :amenities
+    property :amenities_ids
+    property :bathrooms
+    property :bed_type
+    property :bedrooms, :type => Integer
+    property :beds, :type => Integer
+    property :calendar_updated_at, :type => DateTime
+    property :cancel_policy
+    property :cancel_policy_short_str
+    property :cancellation_policy
+    property :check_in_time, :type => DateTime
+    property :check_out_time, :type => DateTime
+    property :city
+    property :country
+    property :country_code
+    property :description
+    property :guests_included
+    property :hosting_native_currency
+    property :hosting_price_native
+    property :house_rules
+    property :instant_bookable
+    property :is_location_exact
+    property :lat
+    property :license
+    property :lng
+    property :max_nights
+    property :max_nights_input_value
+    property :min_nights
+    property :min_nights_input_value
+    property :monthly_price_native
+    property :name
+    property :native_currency
+    property :neighborhood
+    property :person_capacity
+    property :photos
+    property :picture_captions
+    property :picture_count
+    property :price
+    property :price_for_extra_person_native
+    property :price_formatted
+    property :price_native
+    property :property_type
+    property :property_type_id
+    property :recent_review
+    property :require_guest_phone_verification
+    property :require_guest_profile_picture
+    property :requires_license
+    property :reviews_count
+    property :room_type
+    property :room_type_category
+    property :security_deposit
+    property :security_deposit_formatted
+    property :security_deposit_native
+    property :security_price_native
+    property :smart_location
+    property :square_feet
+    property :state
+    property :thumbnail_url
+    property :user
+    property :user_id
+    property :weekly_price_native
+    property :zipcode
 
     DEFAULT_SEARCH_OPTIONS = {
       :offset           => 0,
@@ -9,85 +73,14 @@ module Airbnb
       :number_of_guests => 1
     }
 
-    ALLOWED_SEARCH_OPTIONS = [
-      :location,
+    ALLOWED_SEARCH_OPTIONS = [ :location,
       :number_of_guests,
-      :offset,
-      :items_per_page,
-      :checkin_in,
-      :checkin_out,
+      :offset, :items_per_page,
+      :checkin_in, :checkin_out,
       :room_types,
       :min_beds,
-      :min_bedrooms,
-      :min_bathrooms,
-      :price_min,
-      :price_max
-    ]
-
-    ATTRIBUTES = [
-      :address,
-      :amenities,
-      :amenities_ids,
-      :bathrooms,
-      :bed_type,
-      :bedrooms,
-      :beds,
-      :calendar_updated_at,
-      :cancel_policy,
-      :cancel_policy_short_str,
-      :cancellation_policy,
-      :check_in_time,
-      :check_out_time,
-      :city,
-      :country,
-      :country_code,
-      :description,
-      :guests_included,
-      :hosting_native_currency,
-      :hosting_price_native,
-      :house_rules,
-      :instant_bookable,
-      :is_location_exact,
-      :lat,
-      :license,
-      :lng,
-      :max_nights,
-      :max_nights_input_value,
-      :min_nights,
-      :min_nights_input_value,
-      :monthly_price_native,
-      :name,
-      :native_currency,
-      :neighborhood,
-      :person_capacity,
-      :photos,
-      :picture_captions,
-      :picture_count,
-      :price,
-      :price_for_extra_person_native,
-      :price_formatted,
-      :price_native,
-      :property_type,
-      :property_type_id,
-      :recent_review,
-      :require_guest_phone_verification,
-      :require_guest_profile_picture,
-      :requires_license,
-      :reviews_count,
-      :room_type,
-      :room_type_category,
-      :security_deposit,
-      :security_deposit_formatted,
-      :security_deposit_native,
-      :security_price_native,
-      :smart_location,
-      :square_feet,
-      :state,
-      :thumbnail_url,
-      :user,
-      :user_id,
-      :weekly_price_native,
-      :zipcode
+      :min_bedrooms, :min_bathrooms,
+      :price_min, :price_max
     ]
 
     def self.count(params = {})
@@ -99,31 +92,10 @@ module Airbnb
       data(params).listings.map{ |listing| new(listing.listing) }
     end
 
-    def initialize(attributes)
-      attributes = Hashie::Mash.new(attributes)
-      @id        = attributes.id
-      @error     = attributes.error
-
-      raise ArgumentError.new('id is required') if @error.nil? && @id.nil?
-
-      ATTRIBUTES.each do |key|
-        instance_variable_set("@#{key}", attributes[key])
-      end
-    end
-
-    ATTRIBUTES.each do |key|
-      define_method key do
-        instance_variable_get("@#{key}") || update && instance_variable_get("@#{key}")
-      end
-    end
-
     private
 
     def update
-      attributes = get("/listings/#{@id}").listing
-      ATTRIBUTES.each do |key|
-        instance_variable_set("@#{key}", attributes[key]) unless instance_variable_get("@#{key}")
-      end
+      write_attributes get("/listings/#{id}").listing
     end
 
     def self.data(params = {})
