@@ -13,7 +13,6 @@ require 'airbnb/lib/core_ext/boolean'
 
 require 'airbnb/lib/routes'
 require 'airbnb/lib/resource'
-require 'airbnb/lib/property'
 
 require 'airbnb/version'
 require 'airbnb/connection'

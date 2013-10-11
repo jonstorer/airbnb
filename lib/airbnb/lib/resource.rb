@@ -12,9 +12,18 @@ module Airbnb
 
         include Lib::Routes
         resources base_name
+
+        property :id, :type => Integer
       end
 
       module ClassMethods
+
+        def property(name, options = {})
+          define_method name do
+            update if @attributes[name].nil?
+            @attributes[name]
+          end
+        end
 
         def search_option(parameter, options = {})
           self.search_options << parameter.to_s
@@ -57,6 +66,10 @@ module Airbnb
 
       def write_attributes(attributes = {})
         @attributes.merge!(attributes)
+      end
+
+      def initialize(attributes = {})
+        @attributes = Hashie::Mash.new(attributes)
       end
 
     end

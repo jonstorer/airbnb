@@ -1,7 +1,6 @@
 module Airbnb
   class Listing < Base
     include Lib::Resource
-    include Lib::Property
 
     #TODO rename to search_param
     search_option :items_per_page,   :default => 20
