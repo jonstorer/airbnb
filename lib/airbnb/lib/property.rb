@@ -8,19 +8,16 @@ module Airbnb
       end
 
       module ClassMethods
-
         def property(name, options = {})
           define_method name do
-            update if @attributes.send(name).nil?
-            @attributes[name]
+            update if @_attributes.send(name).nil?
+            @_attributes[name]
           end
         end
-
       end
 
       def initialize(attributes = {})
-        @attributes ||= Hashie::Mash.new
-        @attributes.merge!(attributes)
+        @_attributes = Hashie::Mash.new(attributes)
       end
     end
   end

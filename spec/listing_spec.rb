@@ -83,11 +83,10 @@ describe Airbnb::Listing, '.fetch' do
 end
 
 describe Airbnb::Listing do
-  subject          { Airbnb::Listing.new(attributes) }
+  subject { Airbnb::Listing.new(attributes) }
+
   let(:attributes) do
-    json = File.read('./spec/fixtures/search.json')
-    hash = JSON.parse(json)
-    Hashie::Mash.new(hash).listings.first.listing
+    Hashie::Mash.new(JSON.parse(File.read('./spec/fixtures/search.json'))).listings.first.listing
   end
 
   before do

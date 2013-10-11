@@ -1,11 +1,10 @@
 module Airbnb
   class Listing < Base
     include Lib::Resource
-    include Lib::Search
     include Lib::Property
 
-    resource do |routes|
-      routes.list << '/search'
+    routes do
+      list 'search'
     end
 
     search_option :items_per_page,   :default => 20
