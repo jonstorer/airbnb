@@ -12,8 +12,9 @@ module Airbnb
               "/#{name}s/search"
             end
 
-            define_method "#{name}_path" do |record|
-              "/#{name}s/#{record.id}"
+            define_method "#{name}_path" do |record_or_id|
+              id = record_or_id.respond_to?(:id) ? record_or_id.id : record_or_id
+              "/#{name}s/#{id}"
             end
 
           end

@@ -21,8 +21,12 @@ module Airbnb
           @_default_search_options[parameter] = options[:default] if options.has_key?(:default)
         end
 
+        def find(id)
+          new get(self.class.send(:"#{self.base_name}_path", id))[self.base_name]
+        end
+
         def count(params = {})
-          data(params).listings_count
+          data(params)["#{base_name}s_count"]
         end
 
         def fetch(params = {})
