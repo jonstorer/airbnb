@@ -3,11 +3,6 @@ module Airbnb
     include Lib::Resource
     include Lib::Property
 
-    #TODO: remove this
-    routes do
-      list 'search'
-    end
-
     #TODO rename to search_param
     search_option :items_per_page,   :default => 20
     search_option :offset,           :default => 0

@@ -1,21 +1,26 @@
 module Airbnb
   module Lib
-    class Routes
-      def initialize(base_name)
-        @base_name = base_name
+    module Routes
+      extend ActiveSupport::Concern
+
+      module ClassMethods
+        def resources(name)
+
+          self.class.instance_eval do
+
+            define_method "#{name}s_path" do
+              "/#{name}s/search"
+            end
+
+            define_method "#{name}_path" do |record|
+              "/#{name}s/#{record.id}"
+            end
+
+          end
+
+        end
       end
 
-      def list(scope_or_nil=nil)
-        @list ||= "/#{@base_name}s"
-        @list = [@list, scope_or_nil].compact.join('/')
-        @list
-      end
-
-      def show(scope_or_nil=nil)
-        @show ||= "/#{@base_name}"
-        @show = [@show, scope_or_nil].compact.join('/')
-        @show
-      end
     end
   end
 end
