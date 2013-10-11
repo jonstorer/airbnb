@@ -1,26 +1,26 @@
 require 'spec_helper'
 
-describe Airbnb::Property do
-  subject { Airbnb::Property }
+describe Airbnb::Listing do
+  subject { Airbnb::Listing }
   before  { stub_get(:path => '/api/-/v1/listings/search?items_per_page=10&location=&number_of_guests=1&offset=0', :file => 'search') }
   its(:count) { should == 21485 }
 end
 
-describe Airbnb::Property, '.find' do
-  subject { Airbnb::Property.find(900691) }
+describe Airbnb::Listing, '.find' do
+  subject { Airbnb::Listing.find(900691) }
   before  { stub_get(:path => '/api/-/v1/listings/900691', :file => 'listing-900961') }
 
   its(:id)    { should == 900691 }
-  its(:class) { should == Airbnb::Property }
+  its(:class) { should == Airbnb::Listing }
 end
 
-describe Airbnb::Property, '.fetch' do
-  subject { Airbnb::Property }
+describe Airbnb::Listing, '.fetch' do
+  subject { Airbnb::Listing }
 
   it 'returns properties' do
     stub_get(:path => '/api/-/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'search')
     properties = subject.fetch(:page => 1, :per_page => 20)
-    properties.map(&:class).uniq.should =~ [Airbnb::Property]
+    properties.map(&:class).uniq.should =~ [Airbnb::Listing]
   end
 
   it 'can search with location' do
@@ -88,41 +88,13 @@ describe Airbnb::Property, '.fetch' do
     properties = subject.fetch(:price_max => 200)
     properties.all?.should be_true
   end
-
-  context 'error' do
-    before { stub_get(:path => '/api/-/v1/listings/search?items_per_page=20&location=&number_of_guests=1&offset=0', :file => 'failed_search') }
-
-    it 'returns error properties when there are errors' do
-      properties = subject.fetch(:page => 1, :per_page => 20)
-      properties.count.should == 1
-      properties.first.error.should == 'FUBAR'
-      properties.first.id.should    == nil
-    end
-  end
 end
 
-describe Airbnb::Property, '#new' do
-  subject     { Airbnb::Property }
-  let(:error) { ArgumentError.new('id is required') }
-  before      { ArgumentError.stubs(:new => error) }
+describe Airbnb::Listing do
+  subject { Airbnb::Listing.new(attributes) }
 
-  it 'requires an id' do
-    expect { subject.new({}) }.to raise_error(error)
-  end
-
-  it 'returns an empty object with errors' do
-    property = subject.new({:error => 'FUBAR'})
-    property.id.should be_nil
-    property.error.should == 'FUBAR'
-  end
-end
-
-describe Airbnb::Property do
-  subject          { Airbnb::Property.new(attributes) }
   let(:attributes) do
-    json = File.read('./spec/fixtures/search.json')
-    hash = JSON.parse(json)
-    Hashie::Mash.new(hash).listings.first.listing
+    Hashie::Mash.new(JSON.parse(File.read('./spec/fixtures/search.json'))).listings.first.listing
   end
 
   before do
