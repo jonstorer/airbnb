@@ -10,13 +10,25 @@ module Airbnb
         self.search_options         = []
         self.default_search_options = Hashie::Mash.new
 
-        include Lib::Routes
         resources base_name
 
         property :id, :type => Integer
       end
 
       module ClassMethods
+
+        def resources(name)
+          self.class.instance_eval do
+            define_method "#{name}s_path" do
+              "/#{name}s/search"
+            end
+
+            define_method "#{name}_path" do |record_or_id|
+              id = record_or_id.respond_to?(:id) ? record_or_id.id : record_or_id
+              "/#{name}s/#{id}"
+            end
+          end
+        end
 
         def property(name, options = {})
           define_method name do

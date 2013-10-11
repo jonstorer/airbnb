@@ -16,60 +16,59 @@ module Airbnb
     search_option :price_min
     search_option :price_max
 
-    #TODO do something with :type
     property :address
     property :bathrooms
     property :bed_type
-    property :bedrooms,                        :type => Integer
-    property :beds,                            :type => Integer
-    property :calendar_updated_at,             :type => DateTime
+    property :bedrooms
+    property :beds
+    property :calendar_updated_at
     property :cancel_policy
     property :cancel_policy_short_str
     property :cancellation_policy
-    property :check_in_time,                   :type => DateTime
-    property :check_out_time,                  :type => DateTime
+    property :check_in_time
+    property :check_out_time
     property :city
     property :country
     property :country_code
     property :description
-    property :guests_included, :type => Integer
+    property :guests_included
     property :hosting_native_currency
-    property :hosting_price_native, :type => Integer
+    property :hosting_price_native
     property :house_rules
-    property :instant_bookable,  :type => Boolean
-    property :is_location_exact, :type => Boolean
-    property :lat, :type => Float
-    property :lng, :type => Float
+    property :instant_bookable
+    property :is_location_exact
+    property :lat
+    property :lng
     property :license
-    property :max_nights, :type => Integer
+    property :max_nights
     property :max_nights_input_value
-    property :min_nights, :type => Integer
+    property :min_nights
     property :min_nights_input_value
     property :monthly_price_native
     property :name
     property :native_currency
     property :neighborhood
-    property :person_capacity, :type => Integer
+    property :person_capacity
     property :photos
     property :picture_captions
-    property :picture_count, :type => Integer
-    property :price, :type => Integer
-    property :price_for_extra_person_native, :type => Integer
+    property :picture_count
+    property :price
+    property :price_for_extra_person_native
     property :price_formatted
     property :price_native
     property :recent_review
     property :require_guest_phone_verification
     property :require_guest_profile_picture
     property :requires_license
-    property :reviews_count, :type => Integer
+    property :reviews_count
     property :room_type
     property :room_type_category
-    property :security_deposit, :type => Integer
+    property :security_deposit
     property :security_deposit_formatted
     property :security_deposit_native
     property :security_price_native
     property :smart_location
-    property :square_feet, :type => Integer
+    property :square_feet
     property :state
     property :thumbnail_url
     property :weekly_price_native
