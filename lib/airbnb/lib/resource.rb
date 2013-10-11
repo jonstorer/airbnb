@@ -56,7 +56,7 @@ module Airbnb
       end
 
       def write_attributes(attributes = {})
-        @_attributes.merge!(attributes)
+        @attributes.merge!(attributes)
       end
 
     end
