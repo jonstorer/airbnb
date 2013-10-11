@@ -6,6 +6,14 @@ describe Airbnb::Listing do
   its(:count) { should == 21485 }
 end
 
+describe Airbnb::Listing, '.find' do
+  subject { Airbnb::Listing.find(900691) }
+  before  { stub_get(:path => '/api/-/v1/listings/900691', :file => 'listing-900961') }
+
+  its(:id)    { should == 900691 }
+  its(:class) { should == Airbnb::Listing }
+end
+
 describe Airbnb::Listing, '.fetch' do
   subject { Airbnb::Listing }
 
