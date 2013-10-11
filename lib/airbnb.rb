@@ -9,6 +9,8 @@ require 'active_support/core_ext/object/try'
 require 'active_support/core_ext/module/delegation'
 require 'active_support/concern'
 
+require 'airbnb/lib/core_ext/boolean'
+
 require 'airbnb/lib/routes'
 require 'airbnb/lib/resource'
 require 'airbnb/lib/property'
