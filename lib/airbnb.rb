@@ -15,4 +15,10 @@ require 'airbnb/base'
 require 'airbnb/user'
 require 'airbnb/listing'
 
-module Airbnb; end
+module Airbnb
+
+  def self.config(&block)
+    Connection.instance_eval &block
+  end
+
+end
