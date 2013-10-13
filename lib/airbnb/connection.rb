@@ -8,6 +8,7 @@ module Airbnb
       uri.path         = "api/-/v1#{path}"
       uri.query        = params.try(:to_query)
 
+      # TODO: test
       wait
 
       response = RestClient.get(uri.to_s).body
@@ -16,13 +17,13 @@ module Airbnb
 
     private
 
+    # TODO: test
     def self.wait
       sleep @wait.to_i
     end
 
     def self.wait_for(value=nil)
-      @wait = value if value
-      @wait
+      @wait = value.to_i
     end
   end
 end
