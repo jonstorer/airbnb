@@ -8,23 +8,20 @@ module Airbnb
       uri.path         = "api/-/v1#{path}"
       uri.query        = params.try(:to_query)
 
-      # TODO: test
-      wait
-
-      response = RestClient.get(uri.to_s, headers).body
-      Hashie::Mash.new(JSON.parse(response)) rescue response
+      response = RestClient.get(uri.to_s, headers) do |response, request, result, &block|
+        case response.code
+        when 301
+          raise RateLimitReached
+        when 404
+          raise RecordNotFound, response.body
+        else
+          response
+        end
+      end
+      Hashie::Mash.new(JSON.parse(response.body)) rescue response.body
     end
 
     private
-
-    # TODO: test
-    def self.wait
-      sleep @wait.to_i
-    end
-
-    def self.wait_for(value=nil)
-      @wait = value.to_i
-    end
 
     # TODO: test
     def self.headers
