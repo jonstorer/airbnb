@@ -16,9 +16,6 @@ require 'airbnb/user'
 require 'airbnb/listing'
 
 module Airbnb
-
-  def self.config(&block)
-    Connection.instance_eval &block
-  end
-
+  class RecordNotFound < Exception; end
+  class RateLimitReached < Exception; end
 end
