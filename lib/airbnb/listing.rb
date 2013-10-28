@@ -83,6 +83,11 @@ module Airbnb
     property :user_id
 
     def available?(checkin, checkout, number_of_guests)
+      raise InvalidDateRange   if checkin > checkout
+      raise UnderMinimumNights if min_nights > (checkout - checkin).to_i
+      raise OverMaximumNights  if (checkout - checkin).to_i >= max_nights
+      raise OverPersonCapacity if number_of_guests > person_capacity
+
       options = { :checkin => checkin, :checkout => checkout, :number_of_guests => number_of_guests }
       get("/listings/#{id}/available", options).result
     end

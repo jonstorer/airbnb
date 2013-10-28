@@ -18,4 +18,8 @@ require 'airbnb/listing'
 module Airbnb
   class RecordNotFound < Exception; end
   class RateLimitReached < Exception; end
+  class InvalidDateRange < ArgumentError; end
+  class UnderMinimumNights < ArgumentError; end
+  class OverPersonCapacity < ArgumentError; end
+  class OverMaximumNights < ArgumentError; end
 end
