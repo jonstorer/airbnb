@@ -1,0 +1,10 @@
+{
+  "result": {
+    "available": true,
+    "price": 52,
+    "price_native": 54,
+    "native_currency": "USD",
+    "service_fee": "$6",
+    "price_formatted": "$54"
+  }
+}

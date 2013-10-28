@@ -3,6 +3,5 @@ module Airbnb
     include Lib::Resource
 
     property :first_name
-
   end
 end
