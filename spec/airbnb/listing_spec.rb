@@ -166,3 +166,55 @@ describe Airbnb::Listing do
   its(:weekly_price_native)              { should == nil }
   its(:zipcode)                          { should == '10036' }
 end
+
+describe Airbnb::Listing, '#available?' do
+  let(:listing)  { Airbnb::Listing.new(:id => '1234', :max_nights => 4, :min_nights => 2, :person_capacity => 2) }
+  let(:checkin)  { Date.parse('11/12/2013') }
+  let(:checkout) { Date.parse('13/12/2013') }
+
+  context 'when the listing is available' do
+    subject { listing.available?(checkin, checkout, 2) }
+
+    before do
+      stub_get(:path => "/api/-/v1/listings/1234/available?checkin=#{checkin.strftime('%Y-%m-%d')}&checkout=#{checkout.strftime('%Y-%m-%d')}&number_of_guests=2", :file => '1234-available')
+    end
+
+    its(:available) { should be_true }
+    its(:price)     { should == 52 }
+  end
+
+  context 'when the listing is unavailable' do
+    subject { listing.available?(checkin, checkout, 2) }
+
+    before do
+      stub_get(:path => "/api/-/v1/listings/1234/available?checkin=#{checkin.strftime('%Y-%m-%d')}&checkout=#{checkout.strftime('%Y-%m-%d')}&number_of_guests=2", :file => '1234-unavailable')
+    end
+
+    its(:available) { should be_false }
+    its(:price)     { should be_nil }
+  end
+
+  context 'when using invalid arguments' do
+    it 'raises an argument error when the checkin date is after the checkout date' do
+      checkin  = Date.parse('14/12/2013')
+      checkout = Date.parse('13/12/2013')
+      expect { listing.available?(checkin, checkout, 1) }.to raise_error(Airbnb::InvalidDateRange)
+    end
+
+    it 'raises an argument error when the number of nights between checkin and checkout is less than the minimum required' do
+      checkin  = Date.parse('13/12/2013')
+      checkout = Date.parse('14/12/2013')
+      expect { listing.available?(checkin, checkout, 1) }.to raise_error(Airbnb::UnderMinimumNights)
+    end
+
+    it 'raises an argument error when the number of nights between checkin and checkout is over than the maximum required' do
+      checkin  = Date.parse('13/12/2013')
+      checkout = Date.parse('23/12/2013')
+      expect { listing.available?(checkin, checkout, 1) }.to raise_error(Airbnb::OverMaximumNights)
+    end
+
+    it 'raises an argument error when the number of guests is larger than the max' do
+      expect { listing.available?(checkin, checkout, 3) }.to raise_error(Airbnb::OverPersonCapacity)
+    end
+  end
+end

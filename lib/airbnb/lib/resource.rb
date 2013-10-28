@@ -37,6 +37,7 @@ module Airbnb
           end
         end
 
+        #TODO rename to search_param
         def search_option(parameter, options = {})
           self.search_options << parameter.to_s
           self.default_search_options[parameter] = options[:default] if options.has_key?(:default)

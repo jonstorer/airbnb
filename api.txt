@@ -4,18 +4,5 @@ https://m.airbnb.com/api/v1/listings/977761/reviews?offset=0&items_per_page=10
 https://m.airbnb.com/api/v1/listings/977761/unavailabilities
 https://m.airbnb.com/api/v1/users/3241277
 
-https://m.airbnb.com/api/v1/listings/search?
-location=&
-number_of_guests=1&
-offset=0&
-checkin=2013-06-26&
-checkout=2013-06-27&
-room_types%5B%5D=Private+room&
-room_types%5B%5D=Shared+room&
-room_types%5B%5D=Entire+home%2Fapt&
-min_beds=3&
-min_bedrooms=4&
-min_bathrooms=5&
-price_min=30&
-price_max=70&
-items_per_page=20
+https://m.airbnb.com/api/-/v1/listings/1258582/available?checkin=2014-01-30&checkout=2014-02-01&number_of_guests=1
+{"result":{"available":true,"price":52,"price_native":54,"native_currency":"USD","service_fee":"$6","price_formatted":"$54"}}
