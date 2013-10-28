@@ -2,7 +2,6 @@ module Airbnb
   class Listing < Base
     include Lib::Resource
 
-    #TODO rename to search_param
     search_option :items_per_page,   :default => 20
     search_option :offset,           :default => 0
     search_option :location,         :default => nil
@@ -82,5 +81,10 @@ module Airbnb
 
     property :user
     property :user_id
+
+    def available?(checkin, checkout, number_of_guests)
+      options = { :checkin => checkin, :checkout => checkout, :number_of_guests => number_of_guests }
+      get("/listings/#{id}/available", options).result
+    end
   end
 end

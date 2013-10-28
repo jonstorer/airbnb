@@ -166,3 +166,23 @@ describe Airbnb::Listing do
   its(:weekly_price_native)              { should == nil }
   its(:zipcode)                          { should == '10036' }
 end
+
+describe Airbnb::Listing, '#available?' do
+  subject        { Airbnb::Listing.new(:id => '1234') }
+  let(:checkin)  { Date.parse('11/12/2013') }
+  let(:checkout) { Date.parse('13/12/2013') }
+
+  before do
+    stub_get(:path => "/api/-/v1/listings/1234/available?checkin=#{checkin.strftime('%Y-%m-%d')}&checkout=#{checkout.strftime('%Y-%m-%d')}&number_of_guests=1", :file => '1234-available')
+  end
+
+  context 'when the listing is available' do
+    it 'returns true' do
+      subject.available?(checkin, checkout, 1).available.should be_true
+    end
+
+    it 'returns true' do
+      subject.available?(checkin, checkout, 1).available.should be_true
+    end
+  end
+end
