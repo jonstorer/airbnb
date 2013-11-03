@@ -90,6 +90,13 @@ describe Airbnb::Listing, '.fetch' do
   end
 end
 
+describe Airbnb::Listing, '#id' do
+  subject { Airbnb::Listing.new }
+  it 'raises an error if the id is missing' do
+    expect { subject.id }.to raise_error(Airbnb::RecordIdentifierNotFound)
+  end
+end
+
 describe Airbnb::Listing do
   subject { Airbnb::Listing.new(attributes) }
 
