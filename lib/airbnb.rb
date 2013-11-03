@@ -16,6 +16,7 @@ require 'airbnb/user'
 require 'airbnb/listing'
 
 module Airbnb
+  class RecordIdentifierNotFound < Exception; end
   class RecordNotFound < Exception; end
   class RateLimitReached < Exception; end
   class InvalidDateRange < ArgumentError; end
