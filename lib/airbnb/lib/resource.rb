@@ -12,7 +12,7 @@ module Airbnb
 
         resources base_name
 
-        property :id, :type => Integer
+        identifier :id, :type => Integer
       end
 
       module ClassMethods
@@ -34,6 +34,12 @@ module Airbnb
           define_method name do
             update if @attributes[name].nil?
             @attributes[name]
+          end
+        end
+
+        def identifier(name, options = {})
+          define_method name do
+            @attributes[name] || raise(Airbnb::RecordIdentifierNotFound)
           end
         end
 
