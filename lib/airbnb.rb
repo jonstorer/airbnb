@@ -16,6 +16,16 @@ require 'airbnb/user'
 require 'airbnb/listing'
 
 module Airbnb
+
+  def self.log(message)
+    if defined?(Rails)
+      Rails.logger.info "Airbnb: #{message}"
+    else
+      @logger ||= Logger.new(STDOUT)
+      @logger.info "Airbnb: #{message}"
+    end
+  end
+
   class RecordIdentifierNotFound < Exception; end
   class RecordNotFound < Exception; end
   class RateLimitReached < Exception; end

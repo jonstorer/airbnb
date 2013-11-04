@@ -8,6 +8,8 @@ module Airbnb
       uri.path         = "api/-/v1#{path}"
       uri.query        = params.try(:to_query)
 
+      Airbnb.log(uri.to_s)
+
       response = RestClient.get(uri.to_s, headers) do |response, request, result, &block|
         case response.code
         when 301
